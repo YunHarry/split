@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -29,3 +30,10 @@ class AccountCreateView(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy("accountapp:hello_world")
     template_name = "accountapp/create.html"
+
+class AccountLoginView(LoginView):
+    template_name = "accountapp/login.html"
+
+class AccountLogoutView(LogoutView):
+    pass
+
