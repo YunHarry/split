@@ -9,7 +9,24 @@
             <span>nav1</span>
             <span>nav2</span>
             <span>nav3</span>
-            <span>nav4</span>
+            {% if user.is_authenticated %}
+                <span>
+                    <a href="{% url 'accountapp:logout' %}">
+                        Logout
+                    </a>
+                </span>
+                {% else %}
+                <span>
+                    <a href="{% url 'accountapp:login' %}">
+                        Login
+                    </a>
+                </span>
+                <span>
+                    <a href="{% url 'accountapp:create' %}">
+                        SignUp
+                    </a>
+                </span>
+            {% endif %}
         </div>
     </div>
 </div>
