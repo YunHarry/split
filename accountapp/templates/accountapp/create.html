@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load bootstrap4 %}
 {% block content %}
 
 <div class="my-5 text-center">
@@ -10,10 +10,10 @@
         </h1>
     </div>
 
-    <div>
+    <div style="max-width: 900px; margin: auto">
         <form action="{% url 'accountapp:create' %}" method="post">
             {% csrf_token %}
-            {{ form }}
+            {% bootstrap_form form %}
             <button class="btn btn-warning rounded-pill px-4"
                     type="submit">
                 Sign-up
