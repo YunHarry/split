@@ -12,7 +12,16 @@
         </h1>
     </div>
     <div style="max-width: 900px; margin: auto">
-        가입일자: {{ target_user.date_joined }}
+        <h3>가입일자: {{ target_user.date_joined }}</h3>
+
+        {% if user == target_user %}
+            <div>
+                <div class="btn btn-warning rounded-pill px-5 my-5">
+                    Update
+                </div>
+            </div>
+        {% endif %}
+
     </div>
 
 </div>
