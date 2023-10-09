@@ -2,7 +2,7 @@
     <div style = "text-align: center;">
         <div class="my-5">
             <h1 style="font-family: 'Noto Sans KR', sans-serif;">
-                Split
+                <a href="{% url 'accountapp:hello_world' %}">Split</a>
             </h1>
         </div>
         <div>
@@ -10,6 +10,13 @@
             <span>nav2</span>
             <span>nav3</span>
             {% if user.is_authenticated %}
+
+
+                <span>
+                    <a href="{% url 'accountapp:detail' pk=user.pk %}">
+                        MyPage
+                    </a>
+                </span>
                 <span>
                     <a href="{% url 'accountapp:logout' %}">
                         Logout
