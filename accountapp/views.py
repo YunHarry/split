@@ -1,11 +1,14 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
+from accountapp.decorators import account_ownership_required
 from accountapp.forms import AccountUpdateForm, CustomUserCreationForm
 from accountapp.models import Registration
 
@@ -43,6 +46,10 @@ class AccountDetailView(DetailView):
     template_name = "accountapp/detail.html"
     context_object_name = "target_user"
 
+@method_decorator(login_required, 'get')
+@method_decorator(login_required, 'post')
+@method_decorator(account_ownership_required, 'get')
+@method_decorator(account_ownership_required, 'post')
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountUpdateForm
