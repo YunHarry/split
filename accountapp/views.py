@@ -57,7 +57,7 @@ class AccountUpdateView(UpdateView):
     context_object_name = "target_user"
 
     def get_success_url(self):
-        return reverse("accountapp:detail", {"pk": self.kwargs["pk"]})
+        return reverse("accountapp:detail", kwargs={"pk": self.kwargs["pk"]})
 
 class AccountDeleteView(DeleteView):
     model = User
