@@ -10,6 +10,9 @@
         <h1>
             ID: {{ target_user.username }}
         </h1>
+        <h1>
+            Nickname: {{ target_user.profile.nickname }}
+        </h1>
     </div>
     <div style="max-width: 900px; margin: auto">
         <h3>가입일자: {{ target_user.date_joined }}</h3>
