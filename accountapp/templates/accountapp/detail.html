@@ -7,24 +7,26 @@
 <div class="my-5 text-center">
 
     <div class = "my-5">
-        <h1>
-            ID: {{ target_user.username }}
-        </h1>
-        <h1>
-            Nickname: {{ target_user.profile.nickname }}
-        </h1>
+        <div>
+            <img src="{{ target_user.profile.image.url }}" alt=""
+            style="height: 15rem; width: 15rem; border-radius: 100rem;"
+            >
+        </div>
     </div>
     <div style="max-width: 900px; margin: auto">
-        <h3>가입일자: {{ target_user.date_joined }}</h3>
-
+        <h3> {{ target_user.message}}</h3>
+        <h3>가입일자: {{ target_user.date_joined}}</h3>
+        <h3>이름: {{ target_user.first_name }}</h3>
+        <h3>이메일: {{ target_user.email }}</h3>
         {% if user == target_user %}
-            <div>
+        <div>
+            <a href="{% url 'accountapp:update' pk=target_user.pk %}">
                 <div class="btn btn-warning rounded-pill px-5 my-5">
                     Update
                 </div>
-            </div>
+            </a>
+        </div>
         {% endif %}
-
     </div>
 
 </div>
