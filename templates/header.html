@@ -6,7 +6,11 @@
             </h1>
         </div>
         <div>
-            <span>nav1</span>
+            <span>
+                <a href="{% url 'articleapp:temp' %}">
+                Temp
+                </a>
+            </span>
             <span>nav2</span>
             <span>nav3</span>
             {% if user.is_authenticated %}
