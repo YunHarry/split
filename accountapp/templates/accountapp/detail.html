@@ -14,17 +14,41 @@
         </div>
     </div>
     <div style="max-width: 900px; margin: auto">
-        <h3> {{ target_user.message}}</h3>
+        {% if target_user.profile %}
+        <h1>
+            Nickname: {{ target_user.profile.nickname }}
+        </h1>
+        <h3> {{ target_user.profile.message}}</h3>
         <h3>가입일자: {{ target_user.date_joined}}</h3>
         <h3>이름: {{ target_user.first_name }}</h3>
         <h3>이메일: {{ target_user.email }}</h3>
+
+        {% elif target_user == user %}
+        <a href="{% url 'profileapp:create' %}">
+            <h1>
+                Create Profile
+            </h1>
+        </a>
+        {% else %}
+        <h1>unknown</h1>
+        {% endif %}
+    </div>
+
+    <div style="max-width: 900px; margin: auto">
         {% if user == target_user %}
         <div>
             <a href="{% url 'accountapp:update' pk=target_user.pk %}">
                 <div class="btn btn-warning rounded-pill px-5 my-5">
-                    Update
+                    Account Update
                 </div>
             </a>
+            {% if target_user.profile %}
+            <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
+                <div class="btn btn-dark rounded-pill px-5 my-5">
+                    Profile Update
+                </div>
+            </a>
+            {% endif %}
         </div>
         {% endif %}
     </div>
