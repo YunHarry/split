@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="my-5"; style="text-align: center">
+    <h2 style="font-family: 'Noto Sans KR', sans-serif;">
+        Registrations: Connect with my email
+    </h2>
+
+    <!--input form-->
+    <div class="my-4">
+        <form action="/accounts/hello_world/" method="post">
+            {% csrf_token %}
+            <!--bootstrap form design-->
+            <div class="row g-2 my-2">
+              <div class="col-md">
+                <div class="form-floating" style="max-width: 900px; margin: auto;">
+                  <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com">
+                  <label for="floatingInputGrid">Email address</label>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-warning rounded-pill px-4">
+                Register
+            </button>
+        </form>
+    </div>
+
+    <div>
+        {{temp}}
+    </div>
+</div>
+
+
+{% endblock %}
